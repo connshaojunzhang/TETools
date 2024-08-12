@@ -1,6 +1,9 @@
 # Dfam TE Tools container including RepeatMasker, RepeatModeler, coseg
 
-FROM debian:12 AS builder
+FROM ubuntu:20.04 AS builder
+
+RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai" > /etc/timezone
+ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get -y update && apt-get -y install \
     gcc \
